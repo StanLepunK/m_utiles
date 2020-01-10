@@ -3,12 +3,11 @@ void build(int cols, int rows, int law) {
   int len = cols * rows;
   int index = list.size();
   list.clear();
-  int num_first_elem = 3;
-  set_first_elements(num_first_elem);
+  set_first_elements(4);
   boolean result = false;
   while(index < len) {
     switch(law) {
-      case 0: 
+      case 0:
         result = law_a(list);
         break;
       case 1:
@@ -16,6 +15,9 @@ void build(int cols, int rows, int law) {
         break;
       case 2:
         result = law_c(list);
+        break;
+      case 3:
+        result = law_d(list);
         break;
       default:
         result = law_a(list);

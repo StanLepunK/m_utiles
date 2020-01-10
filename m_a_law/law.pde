@@ -60,3 +60,46 @@ boolean law_c(ArrayList<Boolean>list) {
   }
   return next;
 }
+
+
+
+
+
+
+boolean law_d(ArrayList<Boolean>list) {
+  boolean next = false;
+  boolean [] previous = new boolean[3];
+  int min_to_start = 4;
+  if(list.size() >= min_to_start) {
+    boolean me = list.get(list.size() -1);
+
+    previous[0] = list.get(list.size() -2);
+    previous[1] = list.get(list.size() -3);
+    previous[2] = list.get(list.size() -4);
+    // the law
+    // if(me) {
+      if(previous[0] == true && previous[1] == true  && previous[2] == true) {
+        next = true;
+      } else if(previous[0] == true && previous[1] == true  && previous[2] == false) {
+        next = false;
+      } else if(previous[0] == true && previous[1] == false  && previous[2] == false) {
+        next = true;
+      } else if(previous[0] == false && previous[1] == false  && previous[2] == false) {
+        next = false;
+      } else if(previous[0] == false && previous[1] == true  && previous[2] == true) {
+        next = true;
+      } else if(previous[0] == false && previous[1] == false  && previous[2] == true) {
+        next = true;
+      } else if(previous[0] == true && previous[1] == false  && previous[2] == true) {
+        next = false;
+      } else if(previous[0] == false && previous[1] == true  && previous[2] == false) {
+        next = true;
+      }else {
+        next = true;
+      }
+    // }
+  } else if(list.size() < min_to_start) {
+    println("the list need",min_to_start,"elements to start");
+  }
+  return next;
+}
