@@ -9,7 +9,6 @@ float speed_oscillo = 0.1;
 float x = 0;
 float y = 0;
 void draw() {
-  // background(0);
   x += speed_x;
   if(x > width || x < 0) {
     speed_x *= -1;
@@ -19,13 +18,8 @@ void draw() {
     speed_y *= -1;
   }
   stroke(255);
-  strokeWeight(0.5);
-  // line(x,0,x,height);
-  // line(0,y,width,y);
-  noStroke();
-  fill(100);
-  ellipse(x,y,1,1);
-  
+  fill(255);
+  point(x,y);
   
   float radius = height/4;
   float px = sin(x * speed_oscillo) * radius;

@@ -2,13 +2,9 @@
 * simple law inspired by the automata cellular idea
 * https://fr.wikipedia.org/wiki/Automate_cellulaire
 */
-ArrayList<Boolean>list = new ArrayList<Boolean>();
 void setup() {
 	size(200,200);
 	
-	list.add(true);
-	list.add(true);
-	list.add(false);
 	build(width,height,2);
 	// use_line_on_window(width,height, list);
 	int cols = 40;
@@ -17,10 +13,30 @@ void setup() {
 	use_line_on_damier(cols, rows, cell_size, list);
 }
 
+void draw() {
+}
 
+void keyPressed() {
+  if(key == '1') {
+    build(width,height,0);
+  }
+  
+  if(key == '2') {
+    build(width,height,1);
+  }
+  
+  if(key == '3') {
+    build(width,height,2);
+  }
+}
+
+ArrayList<Boolean>list = new ArrayList<Boolean>();
 void build(int cols, int rows, int law) {
 	int len = cols * rows;
 	int index = list.size();
+  list.clear();
+  int num_first_elem = 3;
+  set_first_elements(num_first_elem);
 	boolean result = false;
 	while(index < len) {
 		switch(law) {
@@ -40,6 +56,16 @@ void build(int cols, int rows, int law) {
 		list.add(result);
 		index++;
 	}
+}
+
+void set_first_elements(int num) {
+  for(int i = 0 ; i < num ; i++) {
+    boolean value = false;
+    if(random(1) < 0.5) {
+      value = true;
+    }
+    list.add(value);
+  }
 }
 
 
